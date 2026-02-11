@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "patient-api-collection",
+		"name": "Patient API",
+		"description": "Collection for Patient API CRUD operations and search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": {\n    \"id\": \"d8ff176f-bd0a-4b8e-b329-871952e32e1f\",\n    \"use\": \"official\",\n    \"family\": \"Иванов\",\n    \"given\": [\n      \"Иван\",\n      \"Иванович\"\n    ]\n  },\n  \"gender\": \"male\",\n  \"birthDate\": \"2024-01-13T18:25:43\",\n  \"active\": true\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/patients",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients"
+					]
+				},
+				"description": "Creates a new patient"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Patient by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "64774d5b-38da-4e52-b28c-ffa641b86b7b",
+							"description": "Patient ID (GUID) - replace with actual patient ID"
+						}
+					]
+				},
+				"description": "Retrieves a patient by their unique ID. ID must be in the URL path, NOT in query string. Example: /api/patients/64774d5b-38da-4e52-b28c-ffa641b86b7b"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Patient",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": {\n    \"id\": \"d8ff176f-bd0a-4b8e-b329-871952e32e1f\",\n    \"use\": \"official\",\n    \"family\": \"Иванов\",\n    \"given\": [\n      \"Иван\",\n      \"Иванович\",\n      \"Петрович\"\n    ]\n  },\n  \"gender\": \"male\",\n  \"birthDate\": \"2024-01-13T18:25:43\",\n  \"active\": false\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "d8ff176f-bd0a-4b8e-b329-871952e32e1f",
+							"description": "Patient ID"
+						}
+					]
+				},
+				"description": "Updates an existing patient"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "d8ff176f-bd0a-4b8e-b329-871952e32e1f",
+							"description": "Patient ID"
+						}
+					]
+				},
+				"description": "Deletes a patient by their unique ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Equal (eq)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=eq2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "eq2024-01-13",
+							"description": "Search for patients born on 2024-01-13"
+						}
+					]
+				},
+				"description": "Search patients with birthDate equal to specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Not Equal (ne)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=ne2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ne2024-01-13",
+							"description": "Search for patients NOT born on 2024-01-13"
+						}
+					]
+				},
+				"description": "Search patients with birthDate not equal to specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Less Than (lt)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=lt2024-01-13T10:00:00",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "lt2024-01-13T10:00:00",
+							"description": "Search for patients born before 2024-01-13 10:00"
+						}
+					]
+				},
+				"description": "Search patients with birthDate less than specified date/time"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Greater Than (gt)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=gt2024-01-13T10:00:00",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "gt2024-01-13T10:00:00",
+							"description": "Search for patients born after 2024-01-13 10:00"
+						}
+					]
+				},
+				"description": "Search patients with birthDate greater than specified date/time"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Less or Equal (le)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=le2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "le2024-01-13",
+							"description": "Search for patients born on or before 2024-01-13"
+						}
+					]
+				},
+				"description": "Search patients with birthDate less than or equal to specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Greater or Equal (ge)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=ge2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ge2024-01-13",
+							"description": "Search for patients born on or after 2024-01-13"
+						}
+					]
+				},
+				"description": "Search patients with birthDate greater than or equal to specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Starts After (sa)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=sa2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "sa2024-01-13",
+							"description": "Search for patients born after 2024-01-13 (non-inclusive)"
+						}
+					]
+				},
+				"description": "Search patients with birthDate starting after specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Ends Before (eb)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=eb2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "eb2024-01-13",
+							"description": "Search for patients born before 2024-01-13 (non-inclusive)"
+						}
+					]
+				},
+				"description": "Search patients with birthDate ending before specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Approximately (ap)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=ap2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ap2024-01-13",
+							"description": "Search for patients born approximately on 2024-01-13 (within 10% tolerance)"
+						}
+					]
+				},
+				"description": "Search patients with birthDate approximately equal to specified date"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Date Only (no prefix)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=2024-01-13",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "2024-01-13",
+							"description": "Search for patients born on 2024-01-13 (defaults to eq)"
+						}
+					]
+				},
+				"description": "Search patients with birthDate equal to specified date (default behavior)"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Year Only",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=ge2024",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ge2024",
+							"description": "Search for patients born in 2024 or later"
+						}
+					]
+				},
+				"description": "Search patients by year only"
+			},
+			"response": []
+		},
+		{
+			"name": "Search - Year and Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/patients/search?birthDate=eq2024-01",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "eq2024-01",
+							"description": "Search for patients born in January 2024"
+						}
+					]
+				},
+				"description": "Search patients by year and month"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
