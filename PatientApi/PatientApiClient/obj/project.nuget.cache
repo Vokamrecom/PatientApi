@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kdedqdL/FCU=",
+  "success": true,
+  "projectFilePath": "D:\\Work\\Projects\\PatientApi\\PatientApi\\PatientApiClient\\PatientApiClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vokamrecom\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.23.0\\microsoft.visualstudio.azure.containers.tools.targets.1.23.0.nupkg.sha512"
+  ],
+  "logs": []
+}
